@@ -12,7 +12,6 @@ packages:
           main: ""
           runtime: nodejs:default
           web: true
-          websecure: false
           parameters: {}
           environment: 
             MONGODB_USERNAME: "${MONGODB_USERNAME}"
