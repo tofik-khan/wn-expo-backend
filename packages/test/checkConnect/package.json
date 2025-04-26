@@ -1,0 +1,14 @@
+{
+  "name": "checkconnect",
+  "version": "1.0.0",
+  "description": "Tests Connection",
+  "main": "checkConnect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tofik Khan",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.14.0"
+  }
+}
