@@ -3,9 +3,7 @@ environment: {}
 packages:
     - name: test
       shared: false
-      environment:
-            DB_URI: "${DB_URI}"
-      actions:
+      functions:
         - name: checkConnection
-      parameters: {}
-      annotations: {}
+          environment:
+            DB_URI: "${DB_URI}"
