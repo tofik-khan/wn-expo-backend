@@ -1,8 +1,11 @@
 parameters: {}
-environment: {}
+environment:
+  DB_URI: "${DB_URI}"
 packages:
     - name: test
       shared: false
+      environment:
+            DB_URI: "${DB_URI}"
       functions:
         - name: checkConnection
           environment:
