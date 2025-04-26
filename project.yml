@@ -1,12 +1,22 @@
 parameters: {}
-environment:
-  DB_URI: "${DB_URI}"
+environment: {}
 packages:
     - name: test
       shared: false
-      environment:
-            DB_URI: "${DB_URI}"
+      environment: {}
+      parameters: {}
+      annotations: {}
       functions:
-        - name: checkConnection
-          environment:
-            DB_URI: "${DB_URI}"
+        - name: checkConnect
+          binary: false
+          main: ""
+          runtime: nodejs:default
+          web: true
+          websecure: false
+          parameters: {}
+          environment: 
+            MONGODB_USERNAME: "${MONGODB_USERNAME}"
+            MONGODB_PASSWORD: "${MONGODB_PASSWORD}"
+            MONGODB_CLUSTER: "${MONGODB_CLUSTER}"
+          annotations: {}
+          limits: {}
