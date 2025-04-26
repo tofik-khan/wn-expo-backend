@@ -7,6 +7,5 @@ packages:
             DB_URI: "${DB_URI}"
       actions:
         - name: checkConnection
-      environment: {}
       parameters: {}
       annotations: {}
