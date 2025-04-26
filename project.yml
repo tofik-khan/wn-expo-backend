@@ -1,0 +1,12 @@
+parameters: {}
+environment: {}
+packages:
+    - name: test
+      shared: false
+      actions:
+        - name: checkConnection
+          environment:
+            DB_URI: "${DB_URI}"
+      environment: {}
+      parameters: {}
+      annotations: {}
