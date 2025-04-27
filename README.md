@@ -1,1 +1,0 @@
-# wn-expo-backend
