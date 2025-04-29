@@ -1,8 +1,7 @@
 require('dotenv').config()
-const cors = require("cors");
-
-
+import cors from "cors";
 import express from "express";
+import { auth } from "express-oauth2-jwt-bearer";
 import { dbTest } from "./db/test";
 import {
   createAdmin,
@@ -15,6 +14,12 @@ import { getPresenterCount } from "./db/presenter";
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+const checkJwt = auth({
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_BASE_URL,
+  tokenSigningAlg: "RS256",
+});
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
@@ -29,7 +34,7 @@ app.get("/db/test", dbTest);
 app.get("/admin", getAdmins);
 app.put("/admin/image", updateAdminImage);
 app.put("/admin/lastlogin", updateAdminLastLogin);
-app.post("/admin", createAdmin);
+app.post("/admin", checkJwt, createAdmin);
 
 
 /** SESSION */
