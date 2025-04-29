@@ -6,7 +6,6 @@ const client = new MongoClient(
 );
 
 export const getAdmins = async (req, res) => {
-
   try {
     // Connect to the MongoDB cluster
     await client.connect();
@@ -15,14 +14,12 @@ export const getAdmins = async (req, res) => {
       .db("wn-expo")
       .collection("admins")
       .find({})
-      .toArray()
-    res.send({status: "success", data: admins})
+      .toArray();
+    res.send({ status: "success", data: admins });
   } catch (e) {
     console.error(e);
-    res.status(500).send({status: "error", message: e.message})
+    res.status(500).send({ status: "error", message: e.message });
   } finally {
     await client.close();
   }
-
-
 }
