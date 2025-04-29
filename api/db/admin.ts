@@ -25,6 +25,10 @@ export const getAdmins = async (req, res) => {
   }
 };
 
+export const createAdmin = async (req, res) => {
+  res.send({ status: "IN DEVELOPMENT", data: req.ip });
+};
+
 export const updateAdminImage = async (req, res) => {
   try {
     // Connect to the MongoDB cluster

@@ -4,7 +4,12 @@ const cors = require("cors");
 
 import express from "express";
 import { dbTest } from "./db/test";
-import { getAdmins, updateAdminImage, updateAdminLastLogin } from "./db/admin";
+import {
+  createAdmin,
+  getAdmins,
+  updateAdminImage,
+  updateAdminLastLogin,
+} from "./db/admin";
 import { getSessionsCount } from "./db/session";
 import { getPresenterCount } from "./db/presenter";
 const app = express();
@@ -24,6 +29,7 @@ app.get("/db/test", dbTest);
 app.get("/admin", getAdmins);
 app.put("/admin/image", updateAdminImage);
 app.put("/admin/lastlogin", updateAdminLastLogin);
+app.post("/admin", createAdmin);
 
 
 /** SESSION */
