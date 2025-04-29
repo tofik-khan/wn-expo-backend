@@ -1,4 +1,5 @@
 require("dotenv").config();
+import dayjs from "dayjs";
 import { MongoClient, ObjectId } from "mongodb";
 
 const client = new MongoClient(
@@ -35,6 +36,26 @@ export const updateAdminImage = async (req, res) => {
       .updateOne(
         { _id: new ObjectId(req.body._id) },
         { $set: { image: req.body.image } }
+      );
+    res.send({ status: "success", data: adminUpdated });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send({ status: "error", message: e.message });
+  } finally {
+    await client.close();
+  }
+};
+
+export const updateAdminLastLogin = async (req, res) => {
+  try {
+    await client.connect();
+
+    const adminUpdated = await client
+      .db("wn-expo")
+      .collection("admins")
+      .updateOne(
+        { _id: new ObjectId(req.body._id) },
+        { $set: { lastLogin: dayjs().format() } }
       );
     res.send({ status: "success", data: adminUpdated });
   } catch (e) {
