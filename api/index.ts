@@ -6,6 +6,7 @@ import { dbTest } from "./db/test";
 import {
   createAdmin,
   getAdmins,
+  updateAdmin,
   updateAdminImage,
   updateAdminLastLogin,
 } from "./db/admin";
@@ -32,9 +33,11 @@ app.get("/db/test", dbTest);
 /** ADMIN */
 
 app.get("/admin", getAdmins);
+app.post("/admin", checkJwt, createAdmin);
+app.put("/admin", checkJwt, updateAdmin);
+
 app.put("/admin/image", updateAdminImage);
 app.put("/admin/lastlogin", updateAdminLastLogin);
-app.post("/admin", checkJwt, createAdmin);
 
 
 /** SESSION */
